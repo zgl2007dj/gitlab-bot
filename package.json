@@ -1,0 +1,21 @@
+{
+  "name": "gitlab-bot",
+  "version": "1.0.0",
+  "description": "gitlab bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beyondblog/gitlab-bot"
+  },
+  "author": "beyondblog",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "k8s": "^0.2.0",
+    "moment": "^2.11.2"
+  }
+}
