@@ -10,20 +10,21 @@ var request = require('request');
 
 var kubectl = k8s.kubectl({
     endpoint: 'http://master:8080',
-    binary: '/usr/bin/kubectl'
+    binary: '/Users/zouguoliang/Desktop/workspace/kubectl'
 });
 
-var GIT_HOST = 'YOU GIT SERRVER';
-var PRIVATE_TOKEN = 'YOU PRIVATE TOKEN';
-var TRIGGER_TOKEN = 'YOU TRIGGER TOKEN';
+var GIT_HOST = 'http://192.168.204.42/';
+var PRIVATE_TOKEN = 'mP11bj13Vdm7zVxXrF43';
+var TRIGGER_TOKEN = '17bbe493f28bb3fa65c512d40fcaf7';
 
-
-app.set('port', process.env.PORT || 3002);
+var PORT =  process.env.PORT || 3002;
+app.set('port', PORT);
 app.use(bodyParser.json());
 
 
 //部署服务
 app.use('/depoly', function(req, res) {
+    console.log('部署结果：' + req.body);
     var relicationName = req.body.relicationName;
     var image = req.body.image;
     kubectl.rc.rollingUpdate(relicationName, image, function(err, data) {
@@ -200,7 +201,7 @@ function GetCiID(project_id, cb) {
 }
 
 var server = app.listen(app.get('port'), function() {
-    console.log("Server is start!");
+    console.log("Server is start at:" + PORT);
 });
 
 process.on('SIGINT', function() {
