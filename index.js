@@ -13,12 +13,21 @@ var kubectl = k8s.kubectl({
 });
 
 var GIT_HOST = 'http://192.168.204.42/';
-var PRIVATE_TOKEN = 'mP11bj13Vdm7zVxXrF43';
+var PRIVATE_TOKEN = 'xTMmiBFyP8_UNycXD8Hp'; //'mP11bj13Vdm7zVxXrF43';
 var TRIGGER_TOKEN = '17bbe493f28bb3fa65c512d40fcaf7';
 
 var PORT =  process.env.PORT || 3002;
 app.set('port', PORT);
 app.use(bodyParser.json());
+
+app.use('/test', function(req, res){
+    GetCiID(60 , function(err, ci){
+        console.log(err)
+        console.log(ci)
+        MergeRequestNote(60, 1, 'heheda123')
+    })
+    res.send('ok')
+})
 
 
 //部署服务
